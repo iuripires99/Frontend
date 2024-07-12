@@ -23,7 +23,7 @@ function BudgetsListBox({ numRowsToShow }) {
 
     const loadBudgets = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/budget');
+            const response = await axios.get('https://backend-ofwz.onrender.com/budget');
             setBudgets(response.data);
         } catch (error) {
             console.error('Error fetching budgets:', error);    
@@ -32,7 +32,7 @@ function BudgetsListBox({ numRowsToShow }) {
 
     const loadBudgetStatuses = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/budgetstatus');
+            const response = await axios.get('https://backend-ofwz.onrender.com/budgetstatus');
             setBudgetStatuses(response.data);
         } catch (error) {
             console.error('Error fetching budget statuses:', error);

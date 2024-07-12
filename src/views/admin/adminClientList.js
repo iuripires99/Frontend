@@ -9,7 +9,7 @@ const AdminClientList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userResponse = await axios.get('http://localhost:8080/user');
+                const userResponse = await axios.get('https://backend-ofwz.onrender.com/user');
                 const users = userResponse.data;
 
                 // Filter out admins and map users to the desired structure

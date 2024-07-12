@@ -8,7 +8,7 @@ const BuyerPurchasesList = ({ userId }) => {
 
     useEffect(() => {
         // Fetch data from your API endpoint
-        fetch(`http://localhost:8080/cart/user/${userId}`)
+        fetch(`https://backend-ofwz.onrender.com/cart/user/${userId}`)
             .then(response => response.json())
             .then(data => {
                 // Process the received data into the format needed for the list

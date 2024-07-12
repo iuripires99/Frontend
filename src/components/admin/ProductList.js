@@ -8,7 +8,7 @@ const ProductList = () => {
     const [productFilter, setProductFilter] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:8080/product')
+        axios.get('https://backend-ofwz.onrender.com/product')
             .then(response => {
                 setProducts(response.data);
             })
@@ -39,7 +39,7 @@ const ProductList = () => {
 
     const handleDelete = async (productId) => {
         try {
-            await axios.delete(`http://localhost:8080/product/delete/${productId}`);
+            await axios.delete(`https://backend-ofwz.onrender.com/product/delete/${productId}`);
             setProducts(products.filter(product => product.idProduct !== productId));
             alert('Product deleted successfully!');
         } catch (error) {

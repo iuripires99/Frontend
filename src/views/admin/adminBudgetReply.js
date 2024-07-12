@@ -24,12 +24,12 @@ const AdminBudgetReply = () => {
             try {
                 setIsLoading(true);
                 // Fetch budget details
-                const budgetResponse = await axios.get(`http://localhost:8080/budget/${idBudget}`);
+                const budgetResponse = await axios.get(`https://backend-ofwz.onrender.com/budget/${idBudget}`);
                 const budgetData = budgetResponse.data;
                 setBudget(budgetData);
 
                 // Fetch status options
-                const statusResponse = await axios.get('http://localhost:8080/budgetstatus');
+                const statusResponse = await axios.get('https://backend-ofwz.onrender.com/budgetstatus');
                 setStatusOptions(statusResponse.data);
 
                 // Set initial values based on fetched data
@@ -49,7 +49,7 @@ const AdminBudgetReply = () => {
 
     const handleSave = async () => {
         try {
-            const response = await axios.put(`http://localhost:8080/budget/update/${idBudget}`, {
+            const response = await axios.put(`https://backend-ofwz.onrender.com/budget/update/${idBudget}`, {
                 budgetDescription: reply,
                 budgetDate: budget.budgetDate,
                 idBudgetStatus: selectedStatus,
@@ -67,7 +67,7 @@ const AdminBudgetReply = () => {
 
     const handleReject = async () => {
         try {
-            const response = await axios.put(`http://localhost:8080/budget/update/${idBudget}`, {
+            const response = await axios.put(`https://backend-ofwz.onrender.com/budget/update/${idBudget}`, {
                 idBudgetStatus: 4,
             });
             alert('Budget rejected!');

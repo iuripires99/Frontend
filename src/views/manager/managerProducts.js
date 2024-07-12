@@ -11,7 +11,7 @@ const ManagerProductList = ({ userId }) => {
     useEffect(() => {
         const fetchBuyerId = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/user/checkIdBuyer/${userId}`);
+                const response = await axios.get(`https://backend-ofwz.onrender.com/user/checkIdBuyer/${userId}`);
                 setIdBuyer(response.data.idBuyer);
             } catch (error) {
                 console.error('Error fetching idBuyer:', error);
@@ -26,7 +26,7 @@ const ManagerProductList = ({ userId }) => {
             try {
                 if (!idBuyer) return;
 
-                const response = await axios.get(`http://localhost:8080/userLicenses/${idBuyer}/managers`);
+                const response = await axios.get(`https://backend-ofwz.onrender.com/userLicenses/${idBuyer}/managers`);
                 const managers = response.data;
 
                 const allManagedProducts = managers.reduce((acc, manager) => {
@@ -134,7 +134,7 @@ const ProgressBox = ({ idBuyer, idProduct }) => {
     useEffect(() => {
         const fetchLicenses = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/licenses/user/${idBuyer}`);
+                const response = await axios.get(`https://backend-ofwz.onrender.com/licenses/user/${idBuyer}`);
                 setLicenses(response.data);
             } catch (error) {
                 console.error('Error fetching licenses:', error);

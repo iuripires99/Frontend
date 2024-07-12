@@ -18,7 +18,7 @@ const BuyerManagersList = ({ userId }) => {
     useEffect(() => {
         const fetchUserLicenses = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/licenses/user/${idUser}`);
+                const response = await fetch(`https://backend-ofwz.onrender.com/licenses/user/${idUser}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch user licenses');
                 }
@@ -29,7 +29,7 @@ const BuyerManagersList = ({ userId }) => {
                 
                 // Fetch detailed product information for each unique product ID
                 const productRequests = uniqueProducts.map(productId => (
-                    fetch(`http://localhost:8080/product/${productId}`)
+                    fetch(`https://backend-ofwz.onrender.com/product/${productId}`)
                         .then(response => response.json())
                 ));
 
@@ -72,7 +72,7 @@ const BuyerManagersList = ({ userId }) => {
         event.preventDefault();
         try {
             // First update the buyerId
-            await axios.post('http://localhost:8080/user/updateBuyerId', {
+            await axios.post('https://backend-ofwz.onrender.com/user/updateBuyerId', {
                 email,
                 buyerId
             });
@@ -81,7 +81,7 @@ const BuyerManagersList = ({ userId }) => {
             const productIds = selectedProducts.map(product => product.value);
 
             for (let productId of productIds) {
-                await axios.post('http://localhost:8080/userLicenses/create', {
+                await axios.post('https://backend-ofwz.onrender.com/userLicenses/create', {
                     email,
                     productId
                 });

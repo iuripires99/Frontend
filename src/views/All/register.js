@@ -20,7 +20,7 @@ const Register = () => {
     }
   
     try {
-      const response = await axios.post("http://localhost:8080/user/create", {
+      const response = await axios.post("https://backend-ofwz.onrender.com/user/create", {
         idAccountType: 2, // Always register as buyer
         idDepartment: null, // Null because buyers don't have departments
         idCart: null, // A cart is attributed after account creation

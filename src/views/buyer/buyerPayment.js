@@ -13,7 +13,7 @@ const BuyerPayment = () => {
 
   const handleDeleteFromCart = async (idProductCart) => {
     try {
-      const response = await fetch(`http://localhost:8080/productCart/delete/${idProductCart}`, {
+      const response = await fetch(`https://backend-ofwz.onrender.com/productCart/delete/${idProductCart}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const BuyerPayment = () => {
 
   const fetchCartProducts = async (cartId) => {
     try {
-      const response = await fetch(`http://localhost:8080/cart/${cartId}/products`);
+      const response = await fetch(`https://backend-ofwz.onrender.com/cart/${cartId}/products`);
       const data = await response.json();
       setItems(data);
       console.log("Fetched items:", data);
@@ -43,7 +43,7 @@ const BuyerPayment = () => {
 
   const fetchHighestIdCart = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/cart/all/${idUser}`);
+      const response = await axios.get(`https://backend-ofwz.onrender.com/cart/all/${idUser}`);
       const carts = response.data;
       if (carts && carts.length > 0) {
         const highestIdCart = carts.reduce((max, cart) => (cart.idCart > max ? cart.idCart : max), carts[0].idCart);
@@ -59,7 +59,7 @@ const BuyerPayment = () => {
 
   const createNewCart = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/cart/create", {
+      const response = await axios.post("https://backend-ofwz.onrender.com/cart/create", {
         idUser: idUser,
         cartPrice: 0,
       });
@@ -107,14 +107,14 @@ const BuyerPayment = () => {
     event.preventDefault();
 
     try {
-      const billResponse = await axios.post("http://localhost:8080/billing/create", {
+      const billResponse = await axios.post("https://backend-ofwz.onrender.com/billing/create", {
         idCart: idCart,
       });
 
       if (billResponse.status === 201) {
         console.log("Bill created successfully:", billResponse.data);
 
-        const cartResponse = await axios.get(`http://localhost:8080/cart/${idCart}`);
+        const cartResponse = await axios.get(`https://backend-ofwz.onrender.com/cart/${idCart}`);
         const idUser = cartResponse.data.idUser;
 
         console.log("Fetched idUser:", idUser);
@@ -130,7 +130,7 @@ const BuyerPayment = () => {
 
         console.log("Sending licensesData:", licensesData);
 
-        const licensesResponse = await axios.post("http://localhost:8080/licenses/create", licensesData);
+        const licensesResponse = await axios.post("https://backend-ofwz.onrender.com/licenses/create", licensesData);
 
         if (licensesResponse.status === 200) {
           console.log(`${licensesData.length} licenses created successfully.`);

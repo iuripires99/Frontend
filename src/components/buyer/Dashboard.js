@@ -82,7 +82,7 @@ function BuyerActiveLicenses(idUser) {
   useEffect(() => {
     const fetchActiveLicenses = async () => {
       try {
-        const url = `http://localhost:8080/licenses/status/${idUser}`;
+        const url = `https://backend-ofwz.onrender.com/licenses/status/${idUser}`;
         const res = await axios.get(url);
         if (res.status === 200) {
           const { count } = res.data; // Destructure count from res.data
@@ -107,7 +107,7 @@ function BuyerPendingBudgets(idUser) {
   useEffect(() => {
     const fetchPendingBudgets = async () => {
       try {
-        const url = `http://localhost:8080/budget/count/${idUser}`;
+        const url = `https://backend-ofwz.onrender.com/budget/count/${idUser}`;
         const res = await axios.get(url);
         if (res.status === 200) {
           const { count } = res.data;
@@ -137,7 +137,7 @@ function BuyerLicenses(idUser) {
   useEffect(() => {
     const fetchBuyerLicenses = async () => {
       try {
-        const url = `http://localhost:8080/licenses/count/${idUser}`;
+        const url = `https://backend-ofwz.onrender.com/licenses/count/${idUser}`;
         const res = await axios.get(url);
         if (res.status === 200) {
           const { count } = res.data; // Assuming the response structure is { count: 10 }
@@ -164,7 +164,7 @@ function useTablePendingBudgets(idUser) {
   useEffect(() => {
     const fetchTablePendingBudgets = async () => {
       try {
-        const url = `http://localhost:8080/budget/status2/user/${idUser}`;
+        const url = `https://backend-ofwz.onrender.com/budget/status2/user/${idUser}`;
         const res = await axios.get(url);
         if (res.status === 200) {
           const filteredBudgets = res.data.filter(
@@ -202,7 +202,7 @@ const ManagerContainer = ({ idBuyer }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/user/managers/${idBuyer}`);
+        const response = await axios.get(`https://backend-ofwz.onrender.com/user/managers/${idBuyer}`);
         setBuyerData({ managers: response.data });
         setLoading(false);
       } catch (error) {
@@ -236,7 +236,7 @@ export default BuyerDashboard;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/license/findByBuyer/1"); 
+        const response = await axios.get("https://backend-ofwz.onrender.com/license/findByBuyer/1"); 
         const filteredLicenses = response.data.filter(license => license.idBudgetStatus === 1);
         processLicenses(filteredLicenses);
       } catch (error) {

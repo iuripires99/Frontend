@@ -39,7 +39,7 @@ function ClientListBox({ clientList }) {
 
     const handleDelete = async (clientId) => {
         try {
-            await axios.delete(`http://localhost:8080/user/delete/${clientId}`);
+            await axios.delete(`https://backend-ofwz.onrender.com/user/delete/${clientId}`);
             setClients(clients.filter(client => client[4] !== clientId));
             alert('Client deleted successfully!');
         } catch (error) {

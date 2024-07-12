@@ -19,7 +19,7 @@ const BuyerProductList = ({ userId }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/user/${idUser}/billings`);
+        const response = await fetch(`https://backend-ofwz.onrender.com/user/${idUser}/billings`);
         if (!response.ok) {
           throw new Error("Failed to fetch user data");
         }
@@ -32,7 +32,7 @@ const BuyerProductList = ({ userId }) => {
 
     const fetchProductsData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/product");
+        const response = await fetch("https://backend-ofwz.onrender.com/product");
         if (!response.ok) {
           throw new Error("Failed to fetch product data");
         }
@@ -46,7 +46,7 @@ const BuyerProductList = ({ userId }) => {
     const fetchProductList = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/licenses/user/${idUser}`
+          `https://backend-ofwz.onrender.com/licenses/user/${idUser}`
         );
         const licenses = response.data;
         const uniqueProducts = Array.from(
@@ -94,7 +94,7 @@ const BuyerProductList = ({ userId }) => {
       console.log("Product ID:", productId);
 
       const response = await axios.post(
-        "http://localhost:8080/userLicenses/create",
+        "https://backend-ofwz.onrender.com/userLicenses/create",
         {
           email,
           productId,
@@ -102,7 +102,7 @@ const BuyerProductList = ({ userId }) => {
       );
       console.log("UserLicense created:", response.data);
 
-      await axios.post("http://localhost:8080/user/updateBuyerId", {
+      await axios.post("https://backend-ofwz.onrender.com/user/updateBuyerId", {
         email,
         buyerId: idUser,
       });
@@ -119,7 +119,7 @@ const BuyerProductList = ({ userId }) => {
     if (window.confirm(`Are you sure you want to cancel subscription for ${productName}?`)) {
       try {
         const response = await axios.delete(
-          `http://localhost:8080/userLicenses/delete`,
+          `https://backend-ofwz.onrender.com/userLicenses/delete`,
           {
             data: { idUser, idProduct: productId },  // Ensure idUser and idProduct are correctly passed
           }

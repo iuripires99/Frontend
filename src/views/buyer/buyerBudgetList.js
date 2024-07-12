@@ -17,7 +17,7 @@ const BuyerBudgetList = ({ userId }) => {
             }
 
             // Make POST request to create new budget
-            const response = await axios.post(`http://localhost:8080/budget/create/${idUser}`);
+            const response = await axios.post(`https://backend-ofwz.onrender.com/budget/create/${idUser}`);
             console.log('New budget created:', response.data);
 
             // Optionally handle success (e.g., show a success message, update UI)

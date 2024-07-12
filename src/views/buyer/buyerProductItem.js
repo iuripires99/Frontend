@@ -13,7 +13,7 @@ const BuyerProductItem = ({ userId }) => {
 
   useEffect(() => {
     const idUser = userId;
-    fetch(`http://localhost:8080/user/${idUser}/billings`)
+    fetch(`https://backend-ofwz.onrender.com/user/${idUser}/billings`)
       .then(response => response.json())
       .then(data => {
         const product = data.carts

@@ -19,7 +19,7 @@ const ProductAdd = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/productCategory');
+                const response = await axios.get('https://backend-ofwz.onrender.com/productCategory');
                 setCategories(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -44,7 +44,7 @@ const ProductAdd = () => {
             return;
         }
         setIsLoading(true);
-        const url = 'http://localhost:8080/product/create';
+        const url = 'https://backend-ofwz.onrender.com/product/create';
     
         try {
             const response = await axios.post(url, newProduct);

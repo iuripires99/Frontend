@@ -11,7 +11,7 @@ const FileUpload = ({ userId }) => {
   useEffect(() => {
     const fetchTicketDepartments = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/ticketdepartment');
+        const response = await axios.get('https://backend-ofwz.onrender.com/ticketdepartment');
         setTicketDepartments(response.data.map(department => ({
           value: department.idTicketDepartment.toString(),
           label: department.ticketDepartment
@@ -33,7 +33,7 @@ const FileUpload = ({ userId }) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/ticket/create', {
+      const response = await axios.post('https://backend-ofwz.onrender.com/ticket/create', {
         idTicketDepartment,
         ticketDescription,
         ticketDate: new Date().toISOString(),

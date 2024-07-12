@@ -12,7 +12,7 @@ const PackageAdd = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/product');
+                const response = await axios.get('https://backend-ofwz.onrender.com/product');
                 const products = response.data.map(product => ({
                     value: product.idProduct,
                     label: product.productName
@@ -33,7 +33,7 @@ const PackageAdd = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/package/create', packageData);
+            const response = await axios.post('https://backend-ofwz.onrender.com/package/create', packageData);
             alert('Package created:', response.data);
             // Handle success (e.g., redirect or show a message)
         } catch (error) {

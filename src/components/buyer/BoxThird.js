@@ -8,7 +8,7 @@ const BoxThird = () => {
 
     useEffect(() => {
         // Assuming the API endpoint returns the JSON data you provided
-        axios.get('http://localhost:8080/ticket/buyer/6')
+        axios.get('https://backend-ofwz.onrender.com/ticket/buyer/6')
             .then(response => {
                 setTickets(response.data); // Assuming response.data contains the array of tickets
             })

@@ -22,19 +22,19 @@ const SalesListBox = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const billResponse = await axios.get('http://localhost:8080/billing');
+                const billResponse = await axios.get('https://backend-ofwz.onrender.com/billing');
                 setBills(billResponse.data);
 
-                const cartResponse = await axios.get('http://localhost:8080/cart');
+                const cartResponse = await axios.get('https://backend-ofwz.onrender.com/cart');
                 setCarts(cartResponse.data);
 
-                const userResponse = await axios.get('http://localhost:8080/user');
+                const userResponse = await axios.get('https://backend-ofwz.onrender.com/user');
                 setUsers(userResponse.data);
 
-                const productResponse = await axios.get('http://localhost:8080/product');
+                const productResponse = await axios.get('https://backend-ofwz.onrender.com/product');
                 setProducts(productResponse.data);
 
-                const productCartResponse = await axios.get('http://localhost:8080/productcart');
+                const productCartResponse = await axios.get('https://backend-ofwz.onrender.com/productcart');
                 setProductCarts(productCartResponse.data);
             } catch (error) {
                 console.error('Error loading data:', error);

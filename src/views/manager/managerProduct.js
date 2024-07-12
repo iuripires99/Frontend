@@ -14,7 +14,7 @@ const BuyerProductItem = ({ userId }) => {
   useEffect(() => {
     const fetchBuyerId = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/user/checkIdBuyer/${userId}`);
+        const response = await axios.get(`https://backend-ofwz.onrender.com/user/checkIdBuyer/${userId}`);
         setIdBuyer(response.data.idBuyer);
       } catch (error) {
         console.error('Error fetching idBuyer:', error);
@@ -28,7 +28,7 @@ const BuyerProductItem = ({ userId }) => {
     const fetchProductAndLicensesData = async () => {
       if (idBuyer !== null) {
         try {
-          const response = await axios.get(`http://localhost:8080/licenses/user/${idBuyer}`);
+          const response = await axios.get(`https://backend-ofwz.onrender.com/licenses/user/${idBuyer}`);
           if (response.data.length > 0) {
             const product = response.data[0]; // Assuming we need only one product for now
             setProductData({
@@ -45,11 +45,11 @@ const BuyerProductItem = ({ userId }) => {
             });
 
             // Fetch numeroAtivos
-            const responseAtivos = await axios.get(`http://localhost:8080/licenses/status/${idBuyer}`);
+            const responseAtivos = await axios.get(`https://backend-ofwz.onrender.com/licenses/status/${idBuyer}`);
             const numeroAtivos = responseAtivos.data.count; // Assuming count is the correct property
 
             // Fetch numeroTotal
-            const responseTotal = await axios.get(`http://localhost:8080/licenses/count/${idBuyer}`);
+            const responseTotal = await axios.get(`https://backend-ofwz.onrender.com/licenses/count/${idBuyer}`);
             const numeroTotal = responseTotal.data.count; // Assuming count is the correct property
 
             setLicensesData({ numeroTotal, numeroAtivos });

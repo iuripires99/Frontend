@@ -25,12 +25,12 @@ const BuyerBudgetDetail = () => {
             try {
                 setIsLoading(true);
                 // Fetch budget details
-                const budgetResponse = await axios.get(`http://localhost:8080/budget/products/${idBudget}`);
+                const budgetResponse = await axios.get(`https://backend-ofwz.onrender.com/budget/products/${idBudget}`);
                 const budgetData = budgetResponse.data;
                 setBudget(budgetData);
 
                 // Fetch status options
-                const statusResponse = await axios.get('http://localhost:8080/budgetstatus');
+                const statusResponse = await axios.get('https://backend-ofwz.onrender.com/budgetstatus');
                 setStatusOptions(statusResponse.data);
 
                 // Set initial values based on fetched data
@@ -50,7 +50,7 @@ const BuyerBudgetDetail = () => {
 
     const handleSave = async () => {
         try {
-            await axios.put(`http://localhost:8080/budget/update/${idBudget}`, {
+            await axios.put(`https://backend-ofwz.onrender.com/budget/update/${idBudget}`, {
                 budgetDescription: reply,
                 budgetDate: budget.budgetDate,
                 idBudgetStatus: 2,
@@ -65,7 +65,7 @@ const BuyerBudgetDetail = () => {
 
     const handleReject = async () => {
         try {
-            await axios.delete(`http://localhost:8080/budget/delete/${idBudget}`);
+            await axios.delete(`https://backend-ofwz.onrender.com/budget/delete/${idBudget}`);
             alert('Budget deleted!');
             navigate('/budgets'); // Navigate back to the budgets page
         } catch (error) {

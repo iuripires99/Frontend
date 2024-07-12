@@ -21,7 +21,7 @@ const ManagerTicketList = ({ numRowsToShow, clientId }) => {
 
   const loadTickets = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/ticket/buyer/${clientId}`);
+      const response = await axios.get(`https://backend-ofwz.onrender.com/ticket/buyer/${clientId}`);
       setTickets(response.data);
     } catch (error) {
       console.error('Error fetching tickets:', error);
@@ -30,7 +30,7 @@ const ManagerTicketList = ({ numRowsToShow, clientId }) => {
 
   const loadStatuses = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/ticketstatus');
+      const response = await axios.get('https://backend-ofwz.onrender.com/ticketstatus');
       setStatuses(response.data);
     } catch (error) {
       console.error('Error fetching statuses:', error);

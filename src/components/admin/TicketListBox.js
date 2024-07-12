@@ -29,7 +29,7 @@ function TicketListBox({ numRowsToShow }) {
 
     const loadTickets = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/ticket');
+            const response = await axios.get('https://backend-ofwz.onrender.com/ticket');
             setTickets(response.data);
         } catch (error) {
             console.error('Error fetching tickets:', error);

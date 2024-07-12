@@ -6,7 +6,7 @@ const ShoppingCart = ({ items, onDelete }) => {
 
   const handleDelete = async (idProductCart) => {
     try {
-      const response = await fetch(`http://localhost:8080/productCart/delete/${idProductCart}`, {
+      const response = await fetch(`https://backend-ofwz.onrender.com/productCart/delete/${idProductCart}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

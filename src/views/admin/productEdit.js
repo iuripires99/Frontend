@@ -22,7 +22,7 @@ const EditProduct = () => {
     useEffect(() => {
         const loadProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/product/${idProduct}`);
+                const response = await axios.get(`https://backend-ofwz.onrender.com/product/${idProduct}`);
                 const data = response.data;
                 setProduct(data);
                 setEditedProduct(data); // Set initial editedProduct state
@@ -46,7 +46,7 @@ const EditProduct = () => {
     };
 
     const handleSave = async () => {
-        const url = `http://localhost:8080/product/update/${idProduct}`;
+        const url = `https://backend-ofwz.onrender.com/product/update/${idProduct}`;
 
         try {
             const response = await axios.put(url, editedProduct);

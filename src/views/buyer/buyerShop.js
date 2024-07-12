@@ -17,7 +17,7 @@ const BuyerShop = ({ userId }) => {
   const idUser = userId;
 
   useEffect(() => {
-    fetch("http://localhost:8080/product")
+    fetch("https://backend-ofwz.onrender.com/product")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch products");
@@ -50,7 +50,7 @@ const BuyerShop = ({ userId }) => {
   const fetchBudgets = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8080/budget/status1/user/${idUser}`
+        `https://backend-ofwz.onrender.com/budget/status1/user/${idUser}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch budgets");
@@ -65,7 +65,7 @@ const BuyerShop = ({ userId }) => {
   const handleAddToCart = async (idUser, idProduct, numberOfLicenses) => {
     try {
       const response = await fetch(
-        "http://localhost:8080/productCart/add-to-cart",
+        "https://backend-ofwz.onrender.com/productCart/add-to-cart",
         {
           method: "POST",
           headers: {
@@ -126,7 +126,7 @@ const BuyerShop = ({ userId }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/budgetProduct/create`,
+        `https://backend-ofwz.onrender.com/budgetProduct/create`,
         {
           method: "POST",
           headers: {

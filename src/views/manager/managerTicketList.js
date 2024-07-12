@@ -44,7 +44,7 @@ const TicketListBox = ({ userId }) => {
     const [ticketData, setTicketData] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/ticket/buyer/${userId}`)
+        fetch(`https://backend-ofwz.onrender.com/ticket/buyer/${userId}`)
             .then(response => response.json())
             .then(data => setTicketData(data))
             .catch(error => console.error('Error fetching data:', error));

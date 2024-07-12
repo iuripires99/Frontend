@@ -23,7 +23,7 @@ function BudgetList({ numRowsToShow }) {
     useEffect(() => {
         const fetchBudgets = async () => {
             try {
-                const url = "http://localhost:8080/budget/user/6"; // Replace with your actual endpoint
+                const url = `https://backend-ofwz.onrender.com/budget/user/${idUser}`;
                 const res = await axios.get(url);
                 if (res.status === 200) {
                     const data = res.data;

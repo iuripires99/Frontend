@@ -28,19 +28,19 @@ const AdminTicketReply = () => {
             try {
                 setIsLoading(true);
                 // Fetch ticket details
-                const ticketResponse = await axios.get(`http://localhost:8080/ticket/${idTicket}`);
+                const ticketResponse = await axios.get(`https://backend-ofwz.onrender.com/ticket/${idTicket}`);
                 setTicket(ticketResponse.data);
 
                 // Fetch department options
-                const departmentResponse = await axios.get('http://localhost:8080/ticketdepartment');
+                const departmentResponse = await axios.get('https://backend-ofwz.onrender.com/ticketdepartment');
                 setDepartmentOptions(departmentResponse.data);
 
                 // Fetch status options
-                const statusResponse = await axios.get('http://localhost:8080/ticketstatus');
+                const statusResponse = await axios.get('https://backend-ofwz.onrender.com/ticketstatus');
                 setStatusOptions(statusResponse.data);
 
                 // Fetch priority options
-                const priorityResponse = await axios.get('http://localhost:8080/ticketpriority');
+                const priorityResponse = await axios.get('https://backend-ofwz.onrender.com/ticketpriority');
                 setPriorityOptions(priorityResponse.data);
 
                 // Set initial values based on fetched data
@@ -62,7 +62,7 @@ const AdminTicketReply = () => {
 
     const handleSave = async () => {
         try {
-            const response = await axios.put(`http://localhost:8080/ticket/update/${idTicket}`, {
+            const response = await axios.put(`https://backend-ofwz.onrender.com/ticket/update/${idTicket}`, {
                 ticketName: ticket.ticketName,
                 ticketDescript: ticket.ticketDescription,
                 ticketDate: ticket.ticketDate,
@@ -80,7 +80,7 @@ const AdminTicketReply = () => {
 
     const handleReject = async () => {
         try {
-            const response = await axios.put(`http://localhost:8080/ticket/update/${idTicket}`, {
+            const response = await axios.put(`https://backend-ofwz.onrender.com/ticket/update/${idTicket}`, {
                 idTicketStatus: 4, // id of rejected status
             });
             alert('Ticket rejected!');

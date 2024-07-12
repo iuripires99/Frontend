@@ -20,7 +20,7 @@ const Login = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/user');
+      const response = await axios.get('https://backend-ofwz.onrender.com/user');
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);

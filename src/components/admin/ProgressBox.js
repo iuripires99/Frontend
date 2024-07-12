@@ -8,8 +8,8 @@ const ProgressBox = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const departmentResponse = await axios.get('http://localhost:8080/ticketdepartment');
-                const ticketResponse = await axios.get('http://localhost:8080/ticket/dpending');
+                const departmentResponse = await axios.get('https://backend-ofwz.onrender.com/ticketdepartment');
+                const ticketResponse = await axios.get('https://backend-ofwz.onrender.com/ticket/dpending');
 
                 const departments = departmentResponse.data;
                 const ticketData = ticketResponse.data;

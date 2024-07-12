@@ -17,7 +17,7 @@ function ManagersList() {
     const idUser = 6; // Set idUser to 6
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/userLicenses/${idUser}/managers`)
+        axios.get(`https://backend-ofwz.onrender.com/userLicenses/${idUser}/managers`)
             .then(response => {
                 const managers = response.data.map(manager => {
                     return {
@@ -32,7 +32,7 @@ function ManagersList() {
             })
             .catch(error => console.error('Error fetching managers:', error));
 
-        axios.get(`http://localhost:8080/licenses/user/${idUser}`)
+        axios.get(`https://backend-ofwz.onrender.com/licenses/user/${idUser}`)
             .then(response => {
                 const licenses = response.data;
                 const uniqueProducts = Array.from(new Set(licenses.map(license => ({
@@ -73,7 +73,7 @@ function ManagersList() {
             const productIds = selectedProducts.map(product => product.value);
 
             for (let productId of productIds) {
-                await axios.post(`http://localhost:8080/userLicenses/create`, {
+                await axios.post(`https://backend-ofwz.onrender.com/userLicenses/create`, {
                     email,
                     productId
                 });
@@ -89,11 +89,11 @@ function ManagersList() {
 
     const handleDelete = async (email) => {
         try {
-            await axios.delete(`http://localhost:8080/userLicenses/delete`, {
+            await axios.delete(`https://backend-ofwz.onrender.com/userLicenses/delete`, {
                 data: { email }
             });
 
-            await axios.post(`http://localhost:8080/user/updateBuyerId`, {
+            await axios.post(`https://backend-ofwz.onrender.com/user/updateBuyerId`, {
                 email,
                 buyerId: null
             });
@@ -103,7 +103,7 @@ function ManagersList() {
             alert('User licenses deleted and idBuyer updated successfully!');
 
             // Refresh the managers list after deletion
-            const response = await axios.get(`http://localhost:8080/userLicenses/${idUser}/managers`);
+            const response = await axios.get(`https://backend-ofwz.onrender.com/userLicenses/${idUser}/managers`);
             const managers = response.data.map(manager => {
                 return {
                     id: manager.idUser,

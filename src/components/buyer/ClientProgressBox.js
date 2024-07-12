@@ -8,7 +8,7 @@ const ProgressBox = ({ productId, handleShow }) => {
         const fetchData = async () => {
             try {
                 // Fetch product details based on productId
-                const response = await axios.get(`http://localhost:8080/license/${productId}`);
+                const response = await axios.get(`https://backend-ofwz.onrender.com/license/${productId}`);
                 const productData = response.data;
 
                 // Set the product data to state

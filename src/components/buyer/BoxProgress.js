@@ -9,7 +9,7 @@ const ProgressBox = ({ idUser }) => { // Accept idUser as a prop
     useEffect(() => {
         const fetchLicenses = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/licenses/user/${idUser}`);
+                const response = await axios.get(`https://backend-ofwz.onrender.com/licenses/user/${idUser}`);
                 setLicenses(response.data);
             } catch (error) {
                 console.error('Error fetching licenses:', error);

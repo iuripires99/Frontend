@@ -10,7 +10,7 @@ const ShopItem = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/product/${idProduct}`);
+        const response = await fetch(`https://backend-ofwz.onrender.com/product/${idProduct}`);
         if (!response.ok) {
           throw new Error('Failed to fetch product');
         }

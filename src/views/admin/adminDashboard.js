@@ -34,7 +34,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchWaitingTicketsCount = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/ticket/pending");
+        const response = await axios.get("https://backend-ofwz.onrender.com/ticket/pending");
         setWaitingTicketsCount(response.data.count || 0);
       } catch (error) {
         console.error("Error fetching waiting tickets count:", error);
@@ -47,7 +47,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchPendingBudgetsCount = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/budget/pending");
+        const response = await axios.get("https://backend-ofwz.onrender.com/budget/pending");
         setPendingBudgetsCount(response.data.count || 0);
       } catch (error) {
         console.error("Error fetching pending budgets count:", error);
@@ -60,7 +60,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchActiveLicensesCount = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/licenses/active");
+        const response = await axios.get("https://backend-ofwz.onrender.com/licenses/active");
         setActiveLicensesCount(response.data.count || 0);
       } catch (error) {
         console.error("Error fetching active licenses count:", error);
@@ -73,7 +73,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchInactiveLicensesCount = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/licenses/inactive");
+        const response = await axios.get("https://backend-ofwz.onrender.com/licenses/inactive");
         setInactiveLicensesCount(response.data.count || 0);
       } catch (error) {
         console.error("Error fetching inactive licenses count:", error);
@@ -87,10 +87,10 @@ const AdminDashboard = () => {
     const fetchBudgetCounts = async () => {
       try {
         const responses = await Promise.all([
-          axios.get("http://localhost:8080/budget/pending"),
-          axios.get("http://localhost:8080/budget/rejected"),
-          axios.get("http://localhost:8080/budget/new"),
-          axios.get("http://localhost:8080/budget/paid"),
+          axios.get("https://backend-ofwz.onrender.com/budget/pending"),
+          axios.get("https://backend-ofwz.onrender.com/budget/rejected"),
+          axios.get("https://backend-ofwz.onrender.com/budget/new"),
+          axios.get("https://backend-ofwz.onrender.com/budget/paid"),
         ]);
 
         const counts = {
