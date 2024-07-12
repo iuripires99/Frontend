@@ -9,33 +9,54 @@ const Register = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [accountType, setAccountType] = useState(2); // Default to buyer
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (userPassword !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-  
+
     try {
       const response = await axios.post("https://backend-ofwz.onrender.com/user/create", {
-        idAccountType: 2, // Always register as buyer
-        idDepartment: null, // Null because buyers don't have departments
-        idCart: null, // A cart is attributed after account creation
+        idAccountType: accountType,
+        idDepartment: accountType === 3 ? 1 : null,
+        idCart: null,
         userName,
         userPassword,
         userEmail,
-        userNif: parseInt(userNif), // Parse userNif to integer
-        idBuyer: null, // Null because buyers don't have buyers
+        userNif: parseInt(userNif),
+        idBuyer: null,
       });
-  
+
       console.log("Registration successful:", response.data);
-      // Redirect or show success message
+      // Show success message
+      setSuccessMessage("Account created successfully!");
+      // Clear form fields
+      setUserName("");
+      setUserNif("");
+      setUserEmail("");
+      setUserPassword("");
+      setConfirmPassword("");
+      // Redirect to another page
+      window.location.href = "/"; // Redirect to the home page or any desired route
     } catch (error) {
-      console.error("Registration failed:", error);
-      setError("Registration failed. Please try again."); // Update error state
+      if (error.response) {
+        const { data } = error.response;
+        if (data.error === 'Email already in use') {
+          setError('Email is already registered. Please use a different email.');
+        } else if (data.error === 'NIF already in use') {
+          setError('NIF is already registered. Please use a different NIF.');
+        } else {
+          setError("Registration failed. Please try again.");
+        }
+      } else {
+        setError("Registration failed. Please try again.");
+      }
     }
   };
 
@@ -47,6 +68,7 @@ const Register = () => {
             <div className="bg-light shadow card-registration" style={{ borderRadius: "15px" }}>
               <div className="card-body p-4 p-md-5">
                 <h3 className="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                {successMessage && <p className="alert alert-success">{successMessage}</p>}
                 <form onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-md-12 mb-4">
@@ -134,6 +156,48 @@ const Register = () => {
                         <label className="form-label" htmlFor="confirmPassword">
                           Confirm Password
                         </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-md-12 mb-4">
+                      <h6 className="mb-2 pb-1">Account Type: </h6>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="accountType"
+                          id="buyer"
+                          value="1"
+                          checked={accountType === 1}
+                          onChange={(e) => setAccountType(parseInt(e.target.value))}
+                        />
+                        <label className="form-check-label" htmlFor="buyer">Admin</label>
+                      </div>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="accountType"
+                          id="buyer"
+                          value="2"
+                          checked={accountType === 2}
+                          onChange={(e) => setAccountType(parseInt(e.target.value))}
+                        />
+                        <label className="form-check-label" htmlFor="buyer">Buyer</label>
+                      </div>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="accountType"
+                          id="manager"
+                          value="3"
+                          checked={accountType === 3}
+                          onChange={(e) => setAccountType(parseInt(e.target.value))}
+                        />
+                        <label className="form-check-label" htmlFor="manager">Manager</label>
                       </div>
                     </div>
                   </div>
