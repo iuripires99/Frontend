@@ -7,6 +7,7 @@ import { Modal } from "react-bootstrap";
 const BuyerShop = ({ userId }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [lgShow, setLgShow] = useState(false);
   const [budgetShow, setBudgetShow] = useState(false);
   const [numberOfLicenses, setNumberOfLicenses] = useState(1);
