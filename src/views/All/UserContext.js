@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
     });
     localStorage.removeItem('idUser');
     localStorage.removeItem('userRole');
-    window.location.href = 'http://localhost:3000/';
+    window.location.href = 'https://frontend-uc0j.onrender.com/';
   };
 
   return (

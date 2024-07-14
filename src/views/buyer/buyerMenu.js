@@ -125,17 +125,17 @@ const Menu = ({ userId }) => {
             <Routes>
               <Route path="/dashboard" element={<BuyerDashboard userId={userId} />} />
               <Route path="/managers" element={<BuyerManagerList userId={userId} />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/shop/:idProduct" element={<ShopItem />} />
+              <Route path="/shop" element={<Shop userId={userId}/>} />
+              <Route path="/shop/:idProduct" element={<ShopItem userId={userId}/>} />
               <Route path="/products" element={<BuyerProductList userId={userId} />} />
               <Route path="/purchases" element={<BuyerPurchasesList userId={userId} />} />
               <Route path="/budgets" element={<BuyerBudgetList userId={userId} />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/checkout" element={<BuyerPayment />} />
+              <Route path="/faq" element={<FAQ userId={userId}/>} />
+              <Route path="/checkout" element={<BuyerPayment userId={userId}/>} />
               <Route path="/productitem/:idProduct" element={<BuyerProductItem userId={userId} />} />
-              <Route path="/shop/:id" element={<BuyerShopItem />} />
-              <Route path="/budgetrequest" element={<BuyerBudgetReply />} />
-              <Route path="/budget/details/:idBudget" element={<BuyerBudgetDetail />} />
+              <Route path="/shop/:id" element={<BuyerShopItem userId={userId}/>} />
+              <Route path="/budgetrequest" element={<BuyerBudgetReply userId={userId}/>} />
+              <Route path="/budget/details/:idBudget" element={<BuyerBudgetDetail userId={userId}/>} />
             </Routes>
           </div>
         </div>
