@@ -3,6 +3,12 @@ body {
   max-width: 1920px;
 }
 
+* {
+  font-family: "Alatsi", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .removebtstyle {
   border: none;
   background: transparent;
@@ -187,6 +193,82 @@ a {
   background:linear-gradient(rgb(0, 204, 255),transparent);
   background-color:blue /*this your primary color*/
 }
+
+
+/* -- LOGIN -- */
+
+.login-background {
+  position: relative;
+  background-image: url('./images/camisola.jpg'); /* Replace with the actual path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust the opacity (0.5) to make it darker or lighter */
+  z-index: 1;
+}
+
+.login-background .container {
+  position: relative;
+  z-index: 2;
+}
+
+.custom-input {
+  background-color: #2D2C33 !important;
+  color: white !important;
+  border: none !important;
+  height: 5vh;
+}
+
+.custom-input::placeholder {
+  color: #BFBFBF !important;
+  font-size: 2vh;
+}
+
+.custom-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #FFD201 !important;
+  border-color: #FFD201 !important;
+  color: white !important;
+}
+
+.custom-button {
+  background-color: #FFD201 !important; 
+  border: none;
+  transition: transform 0.2s ease-in-out !important; 
+}
+
+.custom-button:hover {
+  transform: scale(1.05) !important; 
+  background-color: #FFD201;
+}
+
+.custom-button:active {
+  transform: scale(0.98) !important;
+}
+
+
+.custom-link {
+  color: white !important;
+  transition: transform 0.2s ease-in-out !important; 
+}
+
+.custom-link:hover {
+  color: #FFD201 !important;
+}
+
 
 /*
 Já cá estava, tirar isto tudo acho eu
